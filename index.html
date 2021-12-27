@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <title>Frontend Mentor | NFT preview card component</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
+        .attribution {
+            font-size: 11px;
+            text-align: center;
+        }
+        
+        .attribution a {
+            color: hsl(228, 45%, 44%);
+        }
+        
+        html,
+        body {
+            background-color: hsl(217, 54%, 11%);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            margin-top: 50px;
+        }
+        
+        .nft {
+            background-color: hsl(216, 50%, 16%);
+            width: fit-content;
+            display: block;
+            margin: auto;
+            padding: 35px;
+            border-radius: 15px;
+            height: fit-content;
+        }
+        
+        .img {
+            border-radius: 15px;
+        }
+        
+        h1 {
+            color: white;
+            font-weight: 600;
+            font-size: 25px;
+        }
+        
+        #tabela {
+            width: 100%;
+            color: hsl(215, 51%, 70%);
+        }
+        
+        #myImg {
+            width: 300px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            height: auto;
+        }
+        
+        .container {
+            position: relative;
+            width: 100%;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .6s ease;
+            background-color: hsla(178, 100%, 50%, 0.692);
+            border-radius: 5px;
+        }
+        
+        #imgo {
+            color: white;
+            font-size: 100px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .container:hover .overlay {
+            opacity: 1;
+        }
+        
+        #imgo:hover,
+        #imgo:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 5%;
+        }
+        
+        .modal-content {
+            animation-name: zoom;
+            animation-duration: 0.4s;
+        }
+        
+        @keyframes zoom {
+            from {
+                transform: scale(0)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+        /* The Close Button */
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        /* 100% Image Width on Smaller Screens */
+        
+        @media only screen and (max-width: 700px) {
+            .modal-content {
+                width: 90%;
+            }
+            .html,
+            body {
+                margin-top: 50px;
+                height: fit-content;
+            }
+            .nft {
+                width: 90%;
+                padding: 10px;
+            }
+            #myImg {
+                width: 100%;
+            }
+            .paragraph1 {
+                width: 100%;
+            }
+            #tabela {
+                width: 100%;
+            }
+        }
+        
+        img.author {
+            width: 32px;
+            border: 1px white solid;
+            border-radius: 50%;
+        }
+        
+        .paragraph1 {
+            font-size: 18px;
+            color: hsl(215, 51%, 70%);
+            font-weight: 300;
+            width: 300px;
+        }
+        
+        .paragraph2 {
+            font-weight: 300;
+            font-size: 18px;
+            padding-top: 15px;
+            border-top: 1px solid hsl(215, 32%, 27%);
+        }
+        
+        section {
+            display: flex;
+            display: -webkit-flex;
+        }
+        
+        section p {
+            margin: auto 0;
+            padding-left: 5px;
+        }
+        
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: hsl(178, 100%, 50%);
+            text-decoration: none;
+        }
+        
+        a:active {
+            color: hsl(178, 100%, 50%);
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nft">
+        <div class="container">
+            <img src="./images/image-equilibrium.jpg" id="myImg">
+            <div class="overlay">
+                <div id="imgo">
+                    <img src="./images/icon-view.svg"></div>
+            </div>
+            <div id="myModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img01">
+            </div>
+            <script>
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                var img = document.getElementById("imgo");
+                var img2 = document.getElementById("myImg");
+                var modalImg = document.getElementById("img01");
+
+                img.onclick = function() {
+                        modal.style.display = "block";
+                        modalImg.src = img2.src;
+
+                    }
+                    // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+            </script>
+        </div>
+        <h1><a href="#">Equilibrium #3429</a></h1>
+        <p class="paragraph1">Our Equilibrium collection promotes balance and calm.</p>
+        <table id="tabela">
+            <tr>
+                <td style="color: hsl(178, 100%, 50%);">
+                    <section><img src="./images/icon-ethereum.svg">
+                        <p> 0.041 ETH</p>
+                    </section>
+                </td>
+                <td style="float: right;color: hsl(215, 51%, 70%);">
+                    <section><img src="./images/icon-clock.svg">
+                        <p> 3 days left </p>
+                    </section>
+                </td>
+            </tr>
+        </table>
+        <p class="paragraph2 ">
+            <section><img src="./images/image-avatar.png " class="author ">
+                <p style="color: hsl(215, 51%, 70%);">Creation of <a href="#">Jules Wyvern</a></p>
+            </section>
+        </p>
+    </div>
+    <div class="attribution ">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge " target="_blank ">Frontend Mentor</a>. Coded by <a href="# ">Your Name Here</a>.
+    </div>
+</body>
+
+</html>
