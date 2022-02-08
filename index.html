@@ -22,17 +22,20 @@
             background-color: hsl(217, 54%, 11%);
             font-family: 'Outfit', sans-serif;
             font-weight: 600;
-            margin-top: 50px;
+            height: 100%;
         }
         
-        .nft {
-            background-color: hsl(216, 50%, 16%);
-            width: fit-content;
+        .content {
+            padding: 10px;
             display: block;
+            width: fit-content;
             margin: auto;
+        }
+        
+        #nft {
+            background-color: hsl(216, 50%, 16%);
             padding: 35px;
             border-radius: 15px;
-            height: fit-content;
         }
         
         .img {
@@ -152,31 +155,24 @@
             text-decoration: none;
             cursor: pointer;
         }
-        /* 100% Image Width on Smaller Screens */
-        
-        @media only screen and (max-width: 700px) {
-            .modal-content {
-                width: 90%;
-            }
-            .html,
-            body {
-                margin-top: 50px;
-                height: fit-content;
-            }
-            .nft {
-                width: 90%;
-                padding: 10px;
-            }
-            #myImg {
-                width: 100%;
-            }
-            .paragraph1 {
-                width: 100%;
-            }
-            #tabela {
-                width: 100%;
-            }
+
+        .closea {
+            position: fixed;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
         }
+        
+        .closea:hover,
+        .closea:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        /* 100% Image Width on Smaller Screens */
         
         img.author {
             width: 32px;
@@ -188,7 +184,8 @@
             font-size: 18px;
             color: hsl(215, 51%, 70%);
             font-weight: 300;
-            width: 300px;
+            max-width: 300px;
+            width: 100%;
         }
         
         .paragraph2 {
@@ -222,68 +219,122 @@
             color: hsl(178, 100%, 50%);
             text-decoration: none;
         }
+        
+        @media only screen and (max-width: 500px) {
+            .modal-content {
+                width: 90%;
+            }
+            .content {
+                padding: 10px;
+                display: block;
+                margin: auto;
+            }
+            #nft {
+                margin: auto;
+                background-color: hsl(216, 50%, 16%);
+                padding: 20px;
+                border-radius: 15px;
+                height: fit-content;
+            }
+            #myImg {
+                width: 100%;
+            }
+            .paragraph1 {
+                width: 100%;
+                max-width: 700px;
+            }
+            #tabela {
+                width: 100%;
+            }
+
+            .close{
+                position: absolute;
+                top: 15px;
+                right: 35px;
+                color: #f1f1f1;
+                font-size: 40px;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+        }
+        
+        @media only screen and (min-height: 700px) {
+            .nft2 {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        #myModal{
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
-    <div class="nft">
-        <div class="container">
-            <img src="./images/image-equilibrium.jpg" id="myImg">
-            <div class="overlay">
-                <div id="imgo">
-                    <img src="./images/icon-view.svg"></div>
-            </div>
-            <div id="myModal" class="modal">
-                <span class="close">&times;</span>
-                <img class="modal-content" id="img01">
-            </div>
-            <script>
-                // Get the modal
-                var modal = document.getElementById("myModal");
+    <a href="../index.html"><span class="closea">&times;</span></a>
+    <div class="content">
+        <div class="nft2" id="nft">
+            <div class="container">
+                <img src="./images/image-equilibrium.jpg" id="myImg">
+                <div class="overlay">
+                    <div id="imgo">
+                        <img src="./images/icon-view.svg"></div>
+                </div>
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                </div>
+                <script>
+                    // Get the modal
+                    var modal = document.getElementById("myModal");
 
-                // Get the image and insert it inside the modal - use its "alt" text as a caption
-                var img = document.getElementById("imgo");
-                var img2 = document.getElementById("myImg");
-                var modalImg = document.getElementById("img01");
+                    // Get the image and insert it inside the modal - use its "alt" text as a caption
+                    var img = document.getElementById("imgo");
+                    var img2 = document.getElementById("myImg");
+                    var modalImg = document.getElementById("img01");
+                    var nft = document.getElementById("nft")
 
-                img.onclick = function() {
-                        modal.style.display = "block";
-                        modalImg.src = img2.src;
+                    img.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = img2.src;
+                            nft.classList.remove("nft2");
+                        }
+                        // Get the <span> element that closes the modal
+                    var span = document.getElementsByClassName("close")[0];
 
+                    // When the user clicks on <span> (x), close the modal
+                    span.onclick = function() {
+                        modal.style.display = "none";
+                        nft.classList.add("nft2");
                     }
-                    // Get the <span> element that closes the modal
-                var span = document.getElementsByClassName("close")[0];
-
-                // When the user clicks on <span> (x), close the modal
-                span.onclick = function() {
-                    modal.style.display = "none";
-                }
-            </script>
+                </script>
+            </div>
+            <h1><a href="#">Equilibrium #3429</a></h1>
+            <p class="paragraph1">Our Equilibrium collection promotes balance and calm.</p>
+            <table id="tabela">
+                <tr>
+                    <td style="color: hsl(178, 100%, 50%);">
+                        <section><img src="./images/icon-ethereum.svg">
+                            <p> 0.041 ETH</p>
+                        </section>
+                    </td>
+                    <td style="float: right;color: hsl(215, 51%, 70%);">
+                        <section><img src="./images/icon-clock.svg">
+                            <p> 3 days left </p>
+                        </section>
+                    </td>
+                </tr>
+            </table>
+            <p class="paragraph2 ">
+                <section><img src="./images/image-avatar.png " class="author ">
+                    <p style="color: hsl(215, 51%, 70%);">Creation of <a href="#">Jules Wyvern</a></p>
+                </section>
+            </p>
         </div>
-        <h1><a href="#">Equilibrium #3429</a></h1>
-        <p class="paragraph1">Our Equilibrium collection promotes balance and calm.</p>
-        <table id="tabela">
-            <tr>
-                <td style="color: hsl(178, 100%, 50%);">
-                    <section><img src="./images/icon-ethereum.svg">
-                        <p> 0.041 ETH</p>
-                    </section>
-                </td>
-                <td style="float: right;color: hsl(215, 51%, 70%);">
-                    <section><img src="./images/icon-clock.svg">
-                        <p> 3 days left </p>
-                    </section>
-                </td>
-            </tr>
-        </table>
-        <p class="paragraph2 ">
-            <section><img src="./images/image-avatar.png " class="author ">
-                <p style="color: hsl(215, 51%, 70%);">Creation of <a href="#">Jules Wyvern</a></p>
-            </section>
-        </p>
-    </div>
-    <div class="attribution ">
-        Challenge by <a href="https://www.frontendmentor.io?ref=challenge " target="_blank ">Frontend Mentor</a>. Coded by <a href="# ">Your Name Here</a>.
     </div>
 </body>
 
