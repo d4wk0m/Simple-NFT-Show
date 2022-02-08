@@ -115,5 +115,5 @@ I will be focusing on using more flexbox and building more responsive websites
 
 ## Author
 
-- Website - [Dawid Komęza](dkomeza.great-site.net)
+- Website - [Dawid Komęza](http://dkomeza.great-site.net)
 - Frontend Mentor - [@d4wk0m](https://www.frontendmentor.io/profile/d4wk0m)
