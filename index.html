@@ -156,22 +156,6 @@
             cursor: pointer;
         }
 
-        .closea {
-            position: fixed;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        
-        .closea:hover,
-        .closea:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
         /* 100% Image Width on Smaller Screens */
         
         img.author {
@@ -275,7 +259,6 @@
 </head>
 
 <body>
-    <a href="../index.html"><span class="closea">&times;</span></a>
     <div class="content">
         <div class="nft2" id="nft">
             <div class="container">
@@ -289,10 +272,8 @@
                     <img class="modal-content" id="img01">
                 </div>
                 <script>
-                    // Get the modal
                     var modal = document.getElementById("myModal");
 
-                    // Get the image and insert it inside the modal - use its "alt" text as a caption
                     var img = document.getElementById("imgo");
                     var img2 = document.getElementById("myImg");
                     var modalImg = document.getElementById("img01");
@@ -303,10 +284,8 @@
                             modalImg.src = img2.src;
                             nft.classList.remove("nft2");
                         }
-                        // Get the <span> element that closes the modal
                     var span = document.getElementsByClassName("close")[0];
 
-                    // When the user clicks on <span> (x), close the modal
                     span.onclick = function() {
                         modal.style.display = "none";
                         nft.classList.add("nft2");

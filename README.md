@@ -29,20 +29,12 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![](./screenshot.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Add solution URL here](https://github.com/d4wk0m/Simple-NFT-Show)
+- Live Site URL: [Add live site URL here](https://d4wk0m.github.io/Simple-NFT-Show/)
 
 ## My process
 
@@ -50,44 +42,73 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 - Semantic HTML5 markup
 - CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
+I've learned how to create modal images using simple JS and CSS. I also learned how to make image ovelays
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+<div class="overlay">
+    <div id="imgo">
+        <img src="./images/icon-view.svg"></div>
+</div>
 ```
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .6s ease;
+    background-color: hsla(178, 100%, 50%, 0.692);
+    border-radius: 5px;
+}
+
+#imgo {
+    color: white;
+    font-size: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.container:hover .overlay {
+    opacity: 1;
 }
 ```
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+var modal = document.getElementById("myModal");
+
+var img = document.getElementById("imgo");
+var img2 = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+var nft = document.getElementById("nft")
+
+img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = img2.src;
+        nft.classList.remove("nft2");
+    }
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() {
+    modal.style.display = "none";
+    nft.classList.add("nft2");
 }
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+I will be focusing on using more flexbox and building more responsive websites
 
 ### Useful resources
 
